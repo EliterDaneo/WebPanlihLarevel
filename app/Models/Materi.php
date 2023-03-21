@@ -15,7 +15,8 @@ class Materi extends Model
         'playlist_id',
         'is_active',
         'driskripsi',
-        'gambar_materi'
+        'gambar_materi',
+        'diskripsi'
     ];
 
     protected $hidden =[];

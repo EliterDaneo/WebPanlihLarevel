@@ -68,6 +68,12 @@
                         <p>Playlist</p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('materi.index') }}" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-file-video"></i>
+                        <p>Materi vidio</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

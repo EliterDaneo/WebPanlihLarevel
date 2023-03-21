@@ -1,0 +1,79 @@
+@extends('layouts.main')
+
+@section('content')
+    <div class="page-inner mt--6">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card full-height">
+                    <div class="card-header">
+                        <div class="card-head-row">
+                            <div class="card-title">{{ $title }}</div>
+                            <a href="{{ route('materi.create') }}" class="btn btn-primary btn-sm ml-auto">Tambah Vidio</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (Session::has('success'))
+                            <div class="alert alert-primary">
+                                {{ Session('success') }}
+                            </div>
+                        @endif
+                        <div class="table-responsive">
+                            <table id="basic-datatables" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Tumnile</th>
+                                        <th>Judul Materi</th>
+                                        <th>Slug</th>
+                                        <th>Status</th>
+                                        <th>Playlist</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 0;
+                                    @endphp
+                                    @forelse ($materi as $row)
+                                        <tr>
+                                            <td>{{ ++$no }}</td>
+                                            <td>
+                                                <img src="{{ asset('uploads/' . $row->gambar_materi) }}" width="100">
+                                            </td>
+                                            <td>{{ $row->judul_materi }}</td>
+                                            <td>{{ $row->slug }}</td>
+                                            <td>
+                                                @if ($row->is_active == '1')
+                                                    <div class="btn btn-success btn-sm">Active</div>
+                                                @else
+                                                    <div class="btn btn-danger btn-sm">Daft</div>
+                                                @endif
+                                            </td>
+                                            <td>{{ $row->playlist->judul_playlist }}</td>
+                                            <td>
+                                                <a href="{{ route('materi.edit', $row->id) }}"
+                                                    class="btn btn-secondary btn-sm" title="Edit Page"><i
+                                                        class="fas fa-edit"></i></a>
+                                                <form action="{{ route('materi.destroy', $row->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-sm" title="Delete Page"><i
+                                                            class="fas fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td>Data Masih Kosong</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\MateriController;
 use App\Http\Controllers\PlaylistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,4 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::resource('kategori', KategoriController::class);
 Route::resource('artikel', ArtikelController::class);
 Route::resource('playlist', PlaylistController::class);
+Route::resource('materi', MateriController::class);
