@@ -8,65 +8,45 @@
                     <div class="card-header">
                         <div class="card-head-row">
                             <div class="card-title">{{ $title }}</div>
-                            <a href="{{ route('artikel.index') }}" class="btn btn-primary btn-sm ml-auto">Kembali</a>
+                            <a href="{{ route('playlist.index') }}" class="btn btn-primary btn-sm ml-auto">Kembali</a>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-lg-12">
-                                <form action="{{ route('artikel.update', $artikel->id) }}" method="POST"
+                                <form action="{{ route('playlist.update', $playlist->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label>Judul</label>
-                                        <input type="text" name="judul"
+                                        <label>Playlis Vidio</label>
+                                        <input type="text" name="judul_playlist"
                                             class="form-control
-                                        @error('judul')
+                                        @error('judul_playlist')
                                           is_invalid
                                         @enderror"
-                                            id="text" placeholder="Mansukan Judul" value="{{ $artikel->judul }}"
-                                            autofocus>
-                                        @error('judul')
+                                            id="text" placeholder="Mansukan Playlist Vidio"
+                                            value="{{ $playlist->judul_playlist }}" autofocus>
+                                        @error('judul_playlist')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Isi Artikel</label>
-                                        <textarea type="text" name="body"
+                                        <label>Diskripsi Vidio</label>
+                                        <textarea type="text" name="diskripsi"
                                             class="form-control
-                                        @error('body')
+                                        @error('diskripsi')
                                           is_invalid
                                         @enderror"
-                                            id="editor" placeholder="Isi Artikel">{{ $artikel->body }}
+                                            id="editor" placeholder="Mansukan Diskripsi Vidio">{{ $playlist->diskripsi }}
                                         </textarea>
-                                        @error('body')
+                                        @error('diskripsi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Nama Kategori</label>
-                                        <select type="text" name="kategori_id"
-                                            class="form-control
-                                        @error('kategori_id')
-                                          is_invalid
-                                        @enderror"
-                                            id="text" placeholder="Nama Artikel Katagori">
-                                            @foreach ($kategori as $row)
-                                                @if ($row->id == $artikel->kategori_id)
-                                                    <option value={{ $row->id }} selected='selected'>
-                                                        {{ $row->nama_kategori }}</option>
-                                                @else
-                                                    <option value="">-- Pilih Kategori --</option>
-                                                    <option value="{{ $row->id }}">{{ $row->nama_kategori }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Status</label>
@@ -76,9 +56,9 @@
                                           is_invalid
                                         @enderror"
                                             id="text" placeholder="Mansukan Kategori">
-                                            <option value="1" {{ $artikel->is_active == '1' ? 'selected' : '' }}>
+                                            <option value="1" {{ $playlist->is_active == '1' ? 'selected' : '' }}>
                                                 Publish</option>
-                                            <option value="0" {{ $artikel->is_active == '0' ? 'selected' : '' }}>Draft
+                                            <option value="0" {{ $playlist->is_active == '0' ? 'selected' : '' }}>Draft
                                             </option>
                                         </select>
                                         @error('is_active')
@@ -88,16 +68,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Gambar Artikel</label>
-                                        <input type="file" name="gambar_artikel"
+                                        <label>Gambar Playlist</label>
+                                        <input type="file" name="gambar_playlist"
                                             class="form-control
-                                        @error('gambar_artikel')
+                                        @error('gambar_playlist')
                                           is_invalid
                                         @enderror"
                                             id="text" placeholder="Mansukan Kategori">
                                         <br>
                                         <label>Gambar Saat Ini :</label><br>
-                                        <img src="{{ asset('uploads/' . $artikel->gambar_artikel) }}" width="100">
+                                        <img src="{{ asset('uploads/' . $playlist->gambar_playlist) }}" width="100">
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-success btn-sm" type="submit">Simpan</button>

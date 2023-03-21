@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         @if (Session::has('success'))
-                            <div class="alert alert-primary">
+                            <div class="alert alert-primary" role="alert">
                                 {{ Session('success') }}
                             </div>
                         @endif
@@ -26,7 +26,6 @@
                                         <th>Gambar Playlist</th>
                                         <th>Judul Playlist</th>
                                         <th>Slug</th>
-                                        <th>Diskripsi</th>
                                         <th>Publiser</th>
                                         <th>Action</th>
                                     </tr>
@@ -37,14 +36,20 @@
                                     @endphp
                                     @forelse ($playlist as $row)
                                         <tr>
+                                            <td>{{ ++$no }}</td>
                                             <td>
                                                 <img src="{{ asset('uploads/' . $row->gambar_playlist) }}" width="100">
                                             </td>
-                                            <td>{{ ++$no }}</td>
                                             <td>{{ $row->judul_playlist }}</td>
                                             <td>{{ $row->slug }}</td>
-                                            <td>{{ $row->diskripsi }}</td>
                                             <td>{{ $row->users->name }}</td>
+                                            <td>
+                                                @if ($row->is_active == '1')
+                                                    <div class="btn btn-success btn-sm">Active</div>
+                                                @else
+                                                    <div class="btn btn-danger btn-sm">Daft</div>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{{ route('playlist.edit', $row->id) }}"
                                                     class="btn btn-secondary btn-sm" title="Edit Page"><i

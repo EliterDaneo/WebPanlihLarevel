@@ -3,7 +3,7 @@
 @section('content')
     <div class="page-inner mt--6">
         <div class="d-flex align-items-center justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
@@ -37,7 +37,7 @@
                                         @error('body')
                                           is_invalid
                                         @enderror"
-                                            id="text" placeholder="Mansukan Kategori">
+                                            id="editor" placeholder="Mansukan Kategori">
                                         </textarea>
                                         @error('body')
                                             <div class="invalid-feedback">

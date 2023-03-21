@@ -39,6 +39,7 @@
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 <script src="{{ asset('backEnd') }}/js/setting-demo.js"></script>
 <script src="{{ asset('backEnd') }}/js/demo.js"></script>
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <script>
     $('#lineChart').sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: 'line',
@@ -68,4 +69,10 @@
     });
 
     $('#basic-datatables').DataTable({});
+
+    CKEDITOR.replace('editor');
+    $(function() {
+        var timeout = 5000;
+        $('.alert').delay(timeout).fadeOut(300);
+    });
 </script>

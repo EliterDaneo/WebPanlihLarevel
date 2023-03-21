@@ -3,71 +3,57 @@
 @section('content')
     <div class="page-inner mt--6">
         <div class="d-flex align-items-center justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
                             <div class="card-title">{{ $title }}</div>
-                            <a href="{{ route('artikel.index') }}" class="btn btn-primary btn-sm ml-auto">Kembali</a>
+                            <a href="{{ route('playlist.index') }}" class="btn btn-primary btn-sm ml-auto">Kembali</a>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-lg-12">
-                                <form action="{{ route('artikel.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('playlist.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Judul</label>
-                                        <input type="text" name="judul"
+                                        <label>Playlis Vidio</label>
+                                        <input type="text" name="judul_playlist"
                                             class="form-control
-                                        @error('judul')
+                                        @error('judul_playlist')
                                           is_invalid
                                         @enderror"
-                                            id="text" placeholder="Mansukan Kategori" autofocus>
-                                        @error('judul')
+                                            id="text" placeholder="Mansukan Playlist Vidio" autofocus>
+                                        @error('judul_playlist')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Isi Artikel</label>
-                                        <textarea type="text" name="body"
+                                        <label>Diskripsi Vidio</label>
+                                        <textarea type="text" name="diskripsi"
                                             class="form-control
-                                        @error('body')
+                                        @error('diskripsi')
                                           is_invalid
                                         @enderror"
-                                            id="text" placeholder="Mansukan Kategori">
+                                            id="editor" placeholder="Mansukan Diskripsi Vidio">
                                         </textarea>
-                                        @error('body')
+                                        @error('diskripsi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
-                                        <label>Nama Kategori</label>
-                                        <select type="text" name="kategori_id"
+                                        <label>Gambar Playlsit</label>
+                                        <input type="file" name="gambar_playlist"
                                             class="form-control
-                                        @error('kategori_id')
+                                        @error('gambar_playlist')
                                           is_invalid
                                         @enderror"
-                                            id="text" placeholder="Mansukan Kategori">
-                                            {{-- @foreach ($kategori as $row)
-                                                <option value="{{ $row->id }}">{{ $row->nama_kategori }}</option>
-                                            @endforeach --}}
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Gambar Artikel</label>
-                                        <input type="file" name="gambar_artikel"
-                                            class="form-control
-                                        @error('gambar_artikel')
-                                          is_invalid
-                                        @enderror"
-                                            id="text" placeholder="Mansukan Kategori">
-                                        @error('gambar_artikel')
+                                            id="text" placeholder="Mansukan Gambar Playlist">
+                                        @error('gambar_playlist')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>

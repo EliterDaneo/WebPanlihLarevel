@@ -86,7 +86,7 @@
                             </div>
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Vidoe</p>
+                                    <p class="card-category">Vidio</p>
                                     <h4 class="card-title">90</h4>
                                 </div>
                             </div>
