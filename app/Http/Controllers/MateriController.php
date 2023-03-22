@@ -7,6 +7,7 @@ use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MateriController extends Controller
 {
@@ -40,13 +41,15 @@ class MateriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'judul_materi' => 'required|min:4'
+            'judul_materi' => 'required|min:4',
+            'gambar_materi' => 'required|mimes:png,jpg,jpeg,gif,bmp'
         ]);
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul_materi);
         $data['gambar_materi'] = $request->file('gambar_materi')->store('materi');
         Materi::create($data);
-        return redirect()->route('materi.index')->with('success', 'Data Berhasil di Simpan!');
+        Alert::success('Berhasil', 'Data Berhasil di Simpan');
+        return redirect()->route('materi.index');
     }
 
     /**
@@ -86,7 +89,8 @@ class MateriController extends Controller
                 'playlis_id' => $request->playlist_id,
                 'is_active' => $request->is_active,
             ]);
-            return redirect()->route('materi.index')->with('success', 'Data Berhasil di Simpan!');
+            Alert::info('Berhasil', 'Data Berhasil di Update');
+            return redirect()->route('materi.index');
         }else{
             $materi = Materi::find($id);
             Storage::delete($materi->gambar_materi);
@@ -99,7 +103,8 @@ class MateriController extends Controller
                 'is_active' => $request->is_active,
                 'gambar_materi' => $request->file('gambar_materi')->store('materi'),
             ]);
-            return redirect()->route('materi.index')->with('success', 'Data Berhasil di Simpan!');
+            Alert::info('Berhasil', 'Data Berhasil di Update');
+            return redirect()->route('materi.index');
         }
     }
 
@@ -111,6 +116,7 @@ class MateriController extends Controller
         $materi = Materi::find($id);
         Storage::delete($materi->gambar_materi);
         $materi->delete();
-        return redirect()->route('materi.index')->with('success', 'Data Berhasil di Dihapus!');
+        Alert::info('Berhasil', 'Data Berhasil di Update');
+        return redirect()->route('materi.index');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ArtikelController extends Controller
 {
@@ -43,7 +44,8 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'judul' => 'required|min:4'
+            'judul' => 'required|min:4',
+            'gambar_artikel' => 'required|mimes:png,jpg,jpeg,gif,bmp'
         ]);
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul);
@@ -51,7 +53,8 @@ class ArtikelController extends Controller
         $data['views'] = 0;
         $data['gambar_artikel'] = $request->file('gambar_artikel')->store('artikel');
         Artikel::create($data);
-        return redirect()->route('artikel.index')->with('success', 'Data Berhasil di Simpan!');
+        Alert::success('Berhasil', 'Data Berhasil di Simpan');
+        return redirect()->route('artikel.index');
     }
 
     /**
@@ -91,7 +94,8 @@ class ArtikelController extends Controller
                 'is_active' => $request->is_active,
                 'user_id' => Auth::id(),
             ]);
-            return redirect()->route('artikel.index')->with('success', 'Data Berhasil di Simpan!');
+            Alert::info('Berhasil', 'Data Berhasil di Update');
+            return redirect()->route('artikel.index');
         }else{
             $artikel = Artikel::find($id);
             Storage::delete($artikel->gambar_artikel);
@@ -104,7 +108,8 @@ class ArtikelController extends Controller
                 'user_id' => Auth::id(),
                 'gambar_artikel' => $request->file('gambar_artikel')->store('artikel'),
             ]);
-            return redirect()->route('artikel.index')->with('success', 'Data Berhasil di Simpan!');
+            Alert::info('Berhasil', 'Data Berhasil di Update');
+            return redirect()->route('artikel.index');
         }
         
     }
@@ -117,6 +122,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::find($id);
         Storage::delete($artikel->gambar_artikel);
         $artikel->delete();
-        return redirect()->route('artikel.index')->with('success', 'Data Berhasil di Dihapus!');
+        Alert::error('Berhasil', 'Data Berhasil di Hapus');
+        return redirect()->route('artikel.index');
     }
 }

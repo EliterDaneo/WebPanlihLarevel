@@ -18,6 +18,7 @@
     </div>
     {{-- js --}}
     @include('include.js')
+    @include('sweetalert::alert')
 </body>
 
 </html>

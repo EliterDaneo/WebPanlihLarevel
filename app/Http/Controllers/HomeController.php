@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Alert::success('Berhasil', 'Selamat Datang Admin');
         return view('backEnd.dashboard', [
             'title' => 'Home Dashboard System',
             'page' => 'Administrator Dashboard System'
