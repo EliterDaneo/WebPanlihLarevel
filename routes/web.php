@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('materi', MateriController::class);
         Route::resource('slider', SliderController::class);
         Route::resource('iklan', IklanController::class);
+        Route::resource('user', UserController::class);
     });
     Route::group(['middleware' => ['CheckRole:user']], function () {
         Route::resource('kategori', KategoriController::class);

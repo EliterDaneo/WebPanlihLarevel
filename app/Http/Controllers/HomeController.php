@@ -34,7 +34,7 @@ class HomeController extends Controller
         $jumlah_kategori = Kategori::all()->count();
         $jumlah_vidio = Playlist::all()->count();
         $user = Auth::user();
-        Alert::success('Berhasil', 'Selamat Datang Admin');
+        Alert::success('Berhasil', 'Selamat Datang Users');
         return view('backEnd.dashboard', [
             'title' => 'Home Dashboard System',
             'page' => 'Administrator Dashboard System',
