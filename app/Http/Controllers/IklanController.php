@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iklan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,9 +16,11 @@ class IklanController extends Controller
     public function index()
     {
         $iklan = Iklan::all();
+        $user = Auth::user();
         return view('backEnd.iklan.index',[
             'iklan' => $iklan,
-            'title' => 'Iklan Terbaru'
+            'title' => 'Iklan Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -27,9 +30,11 @@ class IklanController extends Controller
     public function create()
     {
         $iklan = Iklan::all();
+        $user = Auth::user();
         return view('backEnd.iklan.create',[
             'iklan' => $iklan,
-            'title' => 'Tambah Iklan Terbaru'
+            'title' => 'Tambah Iklan Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -70,9 +75,11 @@ class IklanController extends Controller
     public function edit(string $id)
     {
         $iklan = Iklan::find($id);
+        $user = Auth::user();
         return view('backEnd.iklan.edit',[
             'iklan' => $iklan,
-            'title' => 'Edit Iklan Terbaru'
+            'title' => 'Edit Iklan Terbaru',
+            'user' => $user
         ]);
     }
 

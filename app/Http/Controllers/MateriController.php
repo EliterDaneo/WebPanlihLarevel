@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Materi;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,9 +18,11 @@ class MateriController extends Controller
     public function index()
     {
         $materi = Materi::all();
+        $user = Auth::user();
         return view('backEnd.materi.index',[
             'materi' => $materi,
-            'title' => 'Materi Vidio Terbaru'
+            'title' => 'Materi Vidio Terbaru',
+            'user' => $user,
         ]);
     }
 
@@ -29,9 +32,11 @@ class MateriController extends Controller
     public function create()
     {
         $playlist = Playlist::all();
+        $user = Auth::user();
         return view('backEnd.materi.create',[
             'playlist' => $playlist,
-            'title' => 'Tambah Materi Vidio Terbaru'
+            'title' => 'Tambah Materi Vidio Terbaru',
+            'user' => $user,
         ]);
     }
 
@@ -67,10 +72,12 @@ class MateriController extends Controller
     {
         $materi = Materi::find($id);
         $playlist = Playlist::all();
+        $user = Auth::user();
         return view('backEnd.materi.edit',[
             'materi' => $materi,
             'playlist' => $playlist,
-            'title' => 'Edit Playlist Terbaru'
+            'title' => 'Edit Playlist Terbaru',
+            'user' => $user,
         ]);
     }
 

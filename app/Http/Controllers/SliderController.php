@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,9 +16,11 @@ class SliderController extends Controller
     public function index()
     {
         $slider = Slider::all();
+        $user = Auth::user();
         return view('backEnd.slider.index',[
             'slider' => $slider,
-            'title' => 'Slider Terbaru'
+            'title' => 'Slider Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -27,9 +30,11 @@ class SliderController extends Controller
     public function create()
     {
         $slider = Slider::all();
+        $user = Auth::user();
         return view('backEnd.slider.create',[
             'slider' => $slider,
-            'title' => 'Tambah Slider Terbaru'
+            'title' => 'Tambah Slider Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -70,9 +75,11 @@ class SliderController extends Controller
     public function edit(string $id)
     {
         $slider = Slider::find($id);
+        $user = Auth::user();
         return view('backEnd.slider.edit',[
             'slider' => $slider,
-            'title' => 'Edit Slider Terbaru'
+            'title' => 'Edit Slider Terbaru',
+            'user' => $user
         ]);
     }
 

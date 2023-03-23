@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,9 +16,11 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
+        $user = Auth::user();
         return view('backEnd.kategori.index',[
             'kategori' => $kategori,
-            'title' => 'Data Artikel Terbaru'
+            'title' => 'Data Artikel Terbaru',
+            'user' => $user,
         ]);
     }
 
@@ -26,8 +29,12 @@ class KategoriController extends Controller
      */
     public function create()
     {
+        $kategori = Kategori::all();
+        $user = Auth::user();
         return view('backEnd.kategori.create',[
-            'title' => 'Tambah Data Artikel Terbaru'
+            'title' => 'Tambah Data Artikel Terbaru',
+            'kategori' => $kategori,
+            'user' => $user
         ]);
     }
 
@@ -63,9 +70,11 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $kategori = Kategori::find($id);
+        $user = Auth::user();
         return view('backEnd.kategori.edit',[
             'title' => 'Edit Data Artikel',
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'user' => $user
         ]);
     }
 

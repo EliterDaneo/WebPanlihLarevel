@@ -17,9 +17,11 @@ class PlaylistController extends Controller
     public function index()
     {
         $playlist = Playlist::all();
+        $user = Auth::user();
         return view('backEnd.playlist.index',[
             'playlist' => $playlist,
-            'title' => 'Playlist Vidio Terbaru'
+            'title' => 'Playlist Vidio Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -28,8 +30,10 @@ class PlaylistController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         return view('backEnd.playlist.create',[
-            'title' => 'Tambah Playlist Vidio Terbaru'
+            'title' => 'Tambah Playlist Vidio Terbaru',
+            'user' => $user
         ]);
     }
 
@@ -65,9 +69,11 @@ class PlaylistController extends Controller
     public function edit(string $id)
     {
         $playlist = Playlist::find($id);
+        $user = Auth::user();
         return view('backEnd.playlist.edit',[
             'playlist' => $playlist,
-            'title' => 'Edit Playlist Terbaru'
+            'title' => 'Edit Playlist Terbaru',
+            'user' => $user
         ]);
     }
 

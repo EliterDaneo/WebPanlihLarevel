@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
+use App\Models\Kategori;
+use App\Models\Playlist;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
@@ -24,10 +29,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $jumlah_user = User::all()->count();
+        $jumlah_aritkel = Artikel::all()->count();
+        $jumlah_kategori = Kategori::all()->count();
+        $jumlah_vidio = Playlist::all()->count();
+        $user = Auth::user();
         Alert::success('Berhasil', 'Selamat Datang Admin');
         return view('backEnd.dashboard', [
             'title' => 'Home Dashboard System',
-            'page' => 'Administrator Dashboard System'
+            'page' => 'Administrator Dashboard System',
+            'jumlah_user' => $jumlah_user,
+            'jumlah_aritkel' => $jumlah_aritkel,
+            'jumlah_kategori' => $jumlah_kategori,
+            'jumlah_vidio' => $jumlah_vidio,
+            'user' => $user
         ]);
     }
 }

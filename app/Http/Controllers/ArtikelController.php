@@ -18,9 +18,11 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::all();
+        $user = Auth::user();
         return view('backEnd.artikel.index',[
             'artikel' => $artikel,
-            'title' => 'Data Artikel Terbaru'
+            'title' => 'Data Artikel Terbaru',
+            'user' => $user,
         ]);
     }
 
@@ -31,10 +33,12 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::all();
         $kategori = Kategori::all();
+        $user = Auth::user();
         return view('backEnd.artikel.create',[
             'artikel' => $artikel,
             'kategori' => $kategori,
-            'title' => 'Data Artikel Terbaru'
+            'title' => 'Data Artikel Terbaru',
+            'user' => $user,
         ]);
     }
 
@@ -72,10 +76,12 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::find($id);
         $kategori = Kategori::all();
+        $user = Auth::user();
         return view('backEnd.artikel.edit',[
             'artikel' => $artikel,
             'kategori' => $kategori,
-            'title' => 'Edit Artikel Terbaru'
+            'title' => 'Edit Artikel Terbaru',
+            'user' => $user,
         ]);
     }
 

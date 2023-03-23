@@ -30,9 +30,17 @@ Route::get('/', [FrontEndController::class, 'index']);
 Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-Route::resource('kategori', KategoriController::class);
-Route::resource('artikel', ArtikelController::class);
-Route::resource('playlist', PlaylistController::class);
-Route::resource('materi', MateriController::class);
-Route::resource('slider', SliderController::class);
-Route::resource('iklan', IklanController::class);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['CheckRole:admin']], function () {
+        Route::resource('kategori', KategoriController::class);
+        Route::resource('artikel', ArtikelController::class);
+        Route::resource('playlist', PlaylistController::class);
+        Route::resource('materi', MateriController::class);
+        Route::resource('slider', SliderController::class);
+        Route::resource('iklan', IklanController::class);
+    });
+    Route::group(['middleware' => ['CheckRole:user']], function () {
+        Route::resource('kategori', KategoriController::class);
+    });
+});
