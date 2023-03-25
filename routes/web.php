@@ -26,7 +26,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [FrontEndController::class, 'index']);
+// Route::get('/', [FrontEndController::class, 'index']);
+// Route::get('/detail-materi/{slug}', [FrontEndController::class, 'detail'])->name('detail-materi');
+
+Route::controller(FrontEndController::class)->group(function(){
+    Route::get('/',  'index');
+    Route::get('/detail-materi/{slug}', 'detail');
+});
 
 Auth::routes();
 
@@ -43,6 +49,5 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('user', UserController::class);
     });
     Route::group(['middleware' => ['CheckRole:user']], function () {
-        Route::resource('kategori', KategoriController::class);
     });
 });

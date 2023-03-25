@@ -7,7 +7,7 @@
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
-                            <div class="card-title">{{ $title }}</div>
+                            <div class="card-title">{{ $title }}</div><br>
                             <a href="{{ route('artikel.create') }}" class="btn btn-primary btn-sm ml-auto">Tambah Artikel</a>
                         </div>
                     </div>
@@ -36,10 +36,10 @@
                                     @endphp
                                     @forelse ($artikel as $row)
                                         <tr>
+                                            <td>{{ ++$no }}</td>
                                             <td>
                                                 <img src="{{ asset('uploads/' . $row->gambar_artikel) }}" width="100">
                                             </td>
-                                            <td>{{ ++$no }}</td>
                                             <td>{{ $row->kategori->nama_kategori }}</td>
                                             <td>{{ $row->judul }}</td>
                                             <td>{{ $row->slug }}</td>
@@ -48,6 +48,9 @@
                                                 <a href="{{ route('artikel.edit', $row->id) }}"
                                                     class="btn btn-secondary btn-sm" title="Edit Page"><i
                                                         class="fas fa-edit"></i></a>
+                                                <a class="btn btn-primary btn-sm" title="Edit Page" data-toggle="modal"
+                                                    data-target="#modal-detail{{ $row->id }}"><i
+                                                        class="fas fa-eye"></i></a>
                                                 <form action="{{ route('artikel.destroy', $row->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf

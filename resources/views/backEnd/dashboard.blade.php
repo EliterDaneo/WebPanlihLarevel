@@ -1,157 +1,207 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="panel-header bg-primary-gradient">
-        <div class="page-inner py-5">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-                <div>
-                    <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-                    <h5 class="text-white op-7 mb-2">{{ $page }}</h5>
-                </div>
-                <div class="ml-md-auto py-2 py-md-0">
-                    {{-- <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
-				<a href="#" class="btn btn-secondary btn-round">Add Customer</a> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="page-inner mt--5">
+    <div class="container-fluid">
+        <!-- Info boxes -->
         <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body ">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ml-3 ml-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">User</p>
-                                    <h4 class="card-title">{{ $jumlah_user }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-info bubble-shadow-small">
-                                    <i class="far fa-newspaper"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ml-3 ml-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Article</p>
-                                    <h4 class="card-title">{{ $jumlah_aritkel }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-success bubble-shadow-small">
-                                    <i class="fas fa-tags"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ml-3 ml-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Kategori</p>
-                                    <h4 class="card-title">{{ $jumlah_kategori }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                    <i class="fas fa-file-video"></i>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
-                                </div>
-                            </div>
-                            <div class="col col-stats ml-3 ml-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Vidio</p>
-                                    <h4 class="card-title">{{ $jumlah_vidio }}</h4>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Users</span>
+                        <span class="info-box-number">
+                            {{ $jumlah_user }}
+                        </span>
                     </div>
+                    <!-- /.info-box-content -->
                 </div>
+                <!-- /.info-box -->
             </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Artikel</span>
+                        <span class="info-box-number">{{ $jumlah_aritkel }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Kategori</span>
+                        <span class="info-box-number">{{ $jumlah_kategori }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Vidios</span>
+                        <span class="info-box-number">{{ $jumlah_vidio }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+
+        <!-- Main row -->
         <div class="row">
-            <div class="col-md-4">
-                <div class="card full-height">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Materi Video</div>
+            <!-- Left col -->
+            <div class="col-md-8">
+                <!-- MAP & BOX PANE -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- DIRECT CHAT -->
+                        <div class="card direct-chat direct-chat-warning">
+                            <div class="card-header">
+                                <h3 class="card-title">Direct Chat</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                            </div>
                         </div>
+                        <!--/.direct-chat -->
                     </div>
-                    <div class="card-body">
+                    <!-- /.col -->
 
+                    <div class="col-md-6">
+                        <!-- USERS LIST -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Latest Login Members</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <ul class="users-list clearfix">
+                                    {{-- @foreach ($user as $user)
+                                        <li>
+                                            <img src="{{ asset('uploads/profile/' . $user->image) }}" alt="User Image">
+                                            <a class="users-list-name" href="#">{{ $user->name }}</a>
+                                            <span class="users-list-date">{{ $user->updated_at }}</span>
+                                        </li>
+                                    @endforeach --}}
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card full-height">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Playlist Video</div>
+                                </ul>
+                                <!-- /.users-list -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer text-center">
+                                <a href="javascript:">View All Users</a>
+                            </div>
+                            <!-- /.card-footer -->
                         </div>
+                        <!--/.card -->
                     </div>
-                    <div class="card-body">
-
-
-                    </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
+
             </div>
+            <!-- /.col -->
+
             <div class="col-md-4">
-                <div class="card full-height">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Draft Artikel</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
+                <!-- Info Boxes Style 2 -->
+                <div class="info-box mb-3 bg-warning">
+                    <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
-
+                    <div class="info-box-content">
+                        <span class="info-box-text">Inventory</span>
+                        <span class="info-box-number">5,200</span>
                     </div>
+                    <!-- /.info-box-content -->
                 </div>
+                <!-- /.info-box -->
+                <div class="info-box mb-3 bg-success">
+                    <span class="info-box-icon"><i class="far fa-heart"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Mentions</span>
+                        <span class="info-box-number">92,050</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                <div class="info-box mb-3 bg-danger">
+                    <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Downloads</span>
+                        <span class="info-box-number">114,381</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                <div class="info-box mb-3 bg-info">
+                    <span class="info-box-icon"><i class="far fa-comment"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Direct Messages</span>
+                        <span class="info-box-number">163,921</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+
+                <!-- PRODUCT LIST -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recently Iklan Products</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                            <li class="item">
+                                @forelse ($iklan as $ik)
+                                    <div class="product-img">
+                                        <img src="{{ asset('uploads/iklan/' . $ik->gambar_iklan) }}" alt="Product Image"
+                                            class="img-size-50">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">Samsung TV
+                                            <span class="badge badge-warning float-right">$1800</span></a>
+                                        <span class="product-description">
+                                            Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                        </span>
+                                    </div>
+                                @empty
+                                    <div> Belum Ada iklan</div>
+                                @endforelse
+
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer text-center">
+                        <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
             </div>
+            <!-- /.col -->
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card full-height">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Artikel Terpopuler</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- /.row -->
     </div>
 @endsection

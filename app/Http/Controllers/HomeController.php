@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Iklan;
 use App\Models\Kategori;
 use App\Models\Playlist;
 use App\Models\User;
@@ -34,15 +35,16 @@ class HomeController extends Controller
         $jumlah_kategori = Kategori::all()->count();
         $jumlah_vidio = Playlist::all()->count();
         $user = Auth::user();
+        $iklan = Iklan::all();
         Alert::success('Berhasil', 'Selamat Datang Users');
         return view('backEnd.dashboard', [
             'title' => 'Home Dashboard System',
-            'page' => 'Administrator Dashboard System',
             'jumlah_user' => $jumlah_user,
             'jumlah_aritkel' => $jumlah_aritkel,
             'jumlah_kategori' => $jumlah_kategori,
             'jumlah_vidio' => $jumlah_vidio,
-            'user' => $user
+            'user' => $user,
+            'iklan' => $iklan
         ]);
     }
 }

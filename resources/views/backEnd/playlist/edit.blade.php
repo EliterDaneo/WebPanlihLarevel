@@ -40,7 +40,7 @@
                                         @error('diskripsi')
                                           is_invalid
                                         @enderror"
-                                            id="editor" placeholder="Mansukan Diskripsi Vidio">{{ $playlist->diskripsi }}
+                                            id="summernote" placeholder="Mansukan Diskripsi Vidio">{{ $playlist->diskripsi }}
                                         </textarea>
                                         @error('diskripsi')
                                             <div class="invalid-feedback">

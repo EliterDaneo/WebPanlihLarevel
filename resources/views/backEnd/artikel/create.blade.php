@@ -37,7 +37,7 @@
                                         @error('body')
                                           is_invalid
                                         @enderror"
-                                            id="editor" placeholder="Mansukan Kategori">
+                                            id="summernote" placeholder="Mansukan Kategori">
                                         </textarea>
                                         @error('body')
                                             <div class="invalid-feedback">

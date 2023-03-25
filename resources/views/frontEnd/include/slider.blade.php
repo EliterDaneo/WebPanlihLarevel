@@ -1,32 +1,17 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-
-            <img src="{{ asset('frontEnd') }}/images/slider_image.png" class="w-100">
-
-        </div>
-        <div class="carousel-item">
-
-            <img src="{{ asset('frontEnd') }}/images/slider_image.png" class="w-100">
-
-        </div>
-        <div class="carousel-item">
-
-            <img src="{{ asset('frontEnd') }}/images/slider_image.png" class="w-100">
-
-        </div>
+        @foreach ($slider as $key => $row)
+            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ asset('uploads/' . $row->gambar_slider) }}" class="w-100" alt="">
+            </div>
+        @endforeach
     </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>

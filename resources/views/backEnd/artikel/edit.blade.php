@@ -40,7 +40,7 @@
                                         @error('body')
                                           is_invalid
                                         @enderror"
-                                            id="editor" placeholder="Isi Artikel">{{ $artikel->body }}
+                                            id="summernote" placeholder="Isi Artikel">{{ $artikel->body }}
                                         </textarea>
                                         @error('body')
                                             <div class="invalid-feedback">
